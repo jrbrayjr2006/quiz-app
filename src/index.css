@@ -31,7 +31,7 @@
 }
 
 .quiz-container {
-  @apply flex flex-col items-center py-8 px-0 max-w-3xs rounded-lg min-w-xs shadow-xl bg-gradient-to-b from-violet-950 to-violet-900 text-white md:max-w-screen;
+  @apply flex flex-col items-center py-8 md:px-10 px-0 max-w-3xs rounded-lg min-w-xs shadow-xl bg-gradient-to-b from-violet-950 to-violet-900 text-white md:max-w-screen;
 }
 
 html {
