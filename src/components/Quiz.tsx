@@ -1,23 +1,21 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import QUESTIONS from '../data/questions.ts';
 import quizIsCompleteImage from '../assets/quiz-complete.png';
+import QuestionTimer from './QuestionTimer.tsx';
 
-export default function Quiz() {
-    // NOTE: The activeQuestionIndex state variable is used to keep track of the currently active question.
-    // The activeQuestionIndex can alternatively be derived from the userAnswers array by adding 1 to the length of the array.
-    // This approach is used to ensure that the userAnswers array is always in sync with the activeQuestion
-    // const [activeQuestionIndex, setActiveQuestionIndex] = useState(0)
-    
-    const [userAnswers, setUserAnswers] = useState<string[]>([]);
+export default function Quiz() {    
+    const [userAnswers, setUserAnswers] = useState<(string | null)[]>([]);
     const activeQuestionIndex: number = userAnswers.length;
     const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
 
-    function handleSelectAnswer(selectedAnswer: string) {
+    const handleSelectAnswer = useCallback(function handleSelectAnswer(selectedAnswer: string | null) {
         console.log('Answer selected is:', selectedAnswer);
         setUserAnswers((previousUserAnswers) => {
             return [...previousUserAnswers, selectedAnswer];
         });
-    }
+    }, []);
+
+    const handleSkipAnswer = useCallback(() => handleSelectAnswer(null), [handleSelectAnswer]);
 
     if(quizIsComplete) {
         return (
@@ -31,7 +29,8 @@ export default function Quiz() {
         return (
             <div className="quiz-container">
                 <div className="flex flex-col items-center font-mono max-w-3xs md:max-w-screen">
-                    <h1 className="text-3xl font-bold uppercase">Quiz</h1>
+                    <h1 className="text-3xl font-bold uppercase mb-2">Quiz</h1>
+                    <QuestionTimer key={activeQuestionIndex} timeout={15000} onTimeout={handleSkipAnswer} />
                     <h2 className="mt-4">{QUESTIONS[activeQuestionIndex].text}</h2>
                     <ul className="max-w-full flex flex-col items-center justify-between mt-4 gap-y-2">
                         {shuffledAnswers.map( answer => 
