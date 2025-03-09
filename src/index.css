@@ -34,6 +34,30 @@
   @apply flex flex-col items-center py-8 md:px-10 px-0 max-w-3xs rounded-lg min-w-xs shadow-xl bg-gradient-to-b from-violet-950 to-violet-900 text-white md:max-w-screen;
 }
 
+.button-standard {
+  @apply min-w-3xs max-w-3xs  py-2 px-4 rounded-2xl cursor-pointer md:min-w-3xl md:max-w-screen lg:min-w-5xl lg:max-w-screen duration-200 ease-in-out;
+}
+
+.button-standard:disabled {
+  @apply bg-gray-500 text-gray-300 cursor-not-allowed;
+}
+
+.button-standard-colors {
+  @apply bg-sky-500 text-black hover:bg-sky-700 hover:text-white;
+}
+
+.button-answer-selected {
+  @apply bg-violet-700 text-white;
+}
+
+.button-answer-correct {
+  @apply bg-green-600 text-white; 
+}
+
+.button-answer-incorrect {
+  @apply bg-red-600 text-white;
+}
+
 html {
   font-family: 'Roboto', sans-serif;
   line-height: 1.5;
