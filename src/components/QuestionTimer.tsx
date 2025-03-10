@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
 
-export default function QuestionTimer({ timeout, onTimeout }: { timeout: number; onTimeout: () => void }) {
-    const [remainingTime, setRemainingTime] = useState<number>(timeout);
+interface QuestionTimerProps {
+    timeout: number;
+    onTimeout: () => void;
+    mode: string | undefined;
+}
 
-    // let timer;
+export default function QuestionTimer({ timeout, onTimeout, mode }: QuestionTimerProps) {
+    const [remainingTime, setRemainingTime] = useState<number>(timeout);
 
     useEffect(() => {
         console.log('Setting timeout');
@@ -32,6 +36,6 @@ export default function QuestionTimer({ timeout, onTimeout }: { timeout: number;
     // clearTimeout(timer);
 
     return (
-        <progress className="m-0 rounded-full bg-violet-700" max={timeout} value={remainingTime} />
+        <progress className={mode} max={timeout} value={remainingTime} />
     );
 }

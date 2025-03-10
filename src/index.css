@@ -39,7 +39,7 @@
 }
 
 .button-standard:disabled {
-  @apply bg-gray-500 text-gray-300 cursor-not-allowed;
+  @apply /* bg-gray-500 text-gray-300 */ opacity-50 cursor-not-allowed;
 }
 
 .button-standard-colors {
@@ -56,6 +56,22 @@
 
 .button-answer-incorrect {
   @apply bg-red-600 text-white;
+}
+
+.correct {
+  @apply mx-auto my-0 rounded-full bg-green-600;
+}
+
+.incorrect {
+  @apply mx-auto my-0 rounded-full bg-red-600;
+}
+
+.question {
+  @apply mx-auto my-0 rounded-full bg-violet-700;
+}
+
+.answered {
+  @apply mx-auto my-0 rounded-full bg-yellow-300;
 }
 
 html {

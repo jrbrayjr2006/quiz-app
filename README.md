@@ -112,3 +112,4 @@ Add the following import to the core or primary style sheet for the project.
 
 ## References
 - [Get started with Tailwind CSS](https://tailwindcss.com/docs/installation/using-vite)
+- [React](https://react.dev/)
